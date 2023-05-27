@@ -51,7 +51,7 @@ class Doctor(models.Model):
         return reverse("model_detail", kwargs={"pk": self.pk})
     
     def __str__(self):
-        return self.name
+        return f"{self.first_name} {self.last_name} -  {self.speciality}"
     
 
 class Patient(models.Model):
@@ -75,6 +75,9 @@ class RequestConsultation(models.Model):
     
     def __str__(self) -> str:
         return f"{self.patient} - {self.status}"
+    
+    class Meta:
+        permissions = (("can_consult", 'Consult Doctor')
 
 class Appointment(models.Model):
     consult = models.ForeignKey(RequestConsultation, verbose_name='Consultation', on_delete=models.CASCADE, max_length=100)

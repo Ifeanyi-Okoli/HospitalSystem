@@ -71,7 +71,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'quick_medic.wsgi.application'
-
+LOGIN_REDIRECT_URL = 'appointment/create'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
