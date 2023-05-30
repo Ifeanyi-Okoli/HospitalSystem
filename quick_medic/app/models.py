@@ -33,19 +33,18 @@ class Specialization(models.Model):
         return self.name
 
 class Doctor(models.Model):
+    photo = models.ImageField(upload_to='media', null=True, blank=True)
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
     is_verified = models.BooleanField(default=False)
     is_booked = models.BooleanField(default=False)
-    # first_name = models.CharField(max_length=100)
-    # last_name = models.CharField(max_length=100)
     speciality = models.ForeignKey(Specialization, on_delete=models.SET_NULL, null=True)
     portfolio_number = models.CharField(max_length=200)
     # hospital = models.CharField(max_length=100)
     # address = models.CharField(max_length=100)
     phone = models.CharField(max_length=100)
     email = models.EmailField(max_length=100)
-    image = models.ImageField(upload_to='pics')
+    # image = models.ImageField(upload_to='pics')
     
     def get_absolute_url(self):
         return reverse("model_detail", kwargs={"pk": self.pk})
@@ -77,7 +76,7 @@ class RequestConsultation(models.Model):
         return f"{self.patient} - {self.status}"
     
     class Meta:
-        permissions = (("can_consult", 'Consult Doctor')
+        permissions = (("can_consult", 'Consult Doctor'))
 
 class Appointment(models.Model):
     consult = models.ForeignKey(RequestConsultation, verbose_name='Consultation', on_delete=models.CASCADE, max_length=100)

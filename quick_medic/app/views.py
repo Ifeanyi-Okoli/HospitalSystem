@@ -48,6 +48,10 @@ class CreateDoctor(CreateView):
     fields = '__all__'
     exclude = ('is_verified', 'is_booked')
     success_url = '/'
+    
+    # def post(self, request):
+    #     if request.method == 'POST' and request.FileUpload():
+    #         pass
 
 
 class DoctorDetail(PermissionRequiredMixin, DetailView):

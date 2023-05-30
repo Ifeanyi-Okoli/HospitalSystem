@@ -9,7 +9,7 @@ from .views import (
 
 urlpatterns = [
     path('', Home.as_view(), name='home'),
-    
+    path('accounts/', include('django.contrib.auth.urls')),
     #DOCTORS URLS
     path('doctor/', include(
         [
