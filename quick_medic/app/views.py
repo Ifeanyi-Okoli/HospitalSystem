@@ -32,8 +32,9 @@ class Home(View):
         pass
     
     
-class CreateUser(CreateView):
+class CreateUser(View):
     def post(self, request):
+        # user_username = request.POST.get('first_name')
         content_type = ContentType.objects.get_for_model(RequestConsultation)
         user = User(username ='user1', first_name='Maruf', last_name='Ogundele', password='password',)
         user_permission = Permission.objects.filter(content_type = content_type)
@@ -133,6 +134,7 @@ class CreateRequest(CreateView):
 
 class RequestDetail(PermissionRequiredMixin, DetailView):
     model = RequestConsultation
+    permission_required = ['can_consult']
     
 class RequestList(ListView):
     model = RequestConsultation

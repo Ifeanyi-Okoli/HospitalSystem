@@ -47,7 +47,7 @@ class Doctor(models.Model):
     # image = models.ImageField(upload_to='pics')
     
     def get_absolute_url(self):
-        return reverse("model_detail", kwargs={"pk": self.pk})
+        return reverse("doctor_detail", kwargs={"pk": self.pk})
     
     def __str__(self):
         return f"{self.first_name} {self.last_name} -  {self.speciality}"
@@ -76,7 +76,7 @@ class RequestConsultation(models.Model):
         return f"{self.patient} - {self.status}"
     
     class Meta:
-        permissions = (("can_consult", 'Consult Doctor'))
+        permissions = (("can_consult", 'Consult Doctor'),)
 
 class Appointment(models.Model):
     consult = models.ForeignKey(RequestConsultation, verbose_name='Consultation', on_delete=models.CASCADE, max_length=100)

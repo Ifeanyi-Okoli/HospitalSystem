@@ -49,11 +49,11 @@ urlpatterns = [
     #SPECIALIZATION URLS
     path('specialization/', include(
         [
-             path('', CreateSpecialization.as_view(), name='create_specialization'),
-             path('<pk>', CreateSpecialization.as_view(), name='specialization_detail'),
+             path('create', CreateSpecialization.as_view(), name='create_specialization'),
+             path('<pk>', SpecializationDetail.as_view(), name='specialization_detail'),
              path('<pk>/update', UpdateSpecialization.as_view(), name='specialization_update'),
              path('<pk>/remove', RemoveSpecialization.as_view(), name='specialization_remove'),
-             path('list', SpecializationList.as_view(), name='specialization_list'),
-             path('all', SpecializationDetail.as_view(), name='specialization_detail'),
+             path('', SpecializationList.as_view(), name='specialization_list'),
+            #  path('all', SpecializationDetail.as_view(), name='specialization_detail'),
 ])),
 ]

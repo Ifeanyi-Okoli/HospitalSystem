@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-    <form methods = 'post' enctype="multipart/form-data">
+    <form method='post' enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         <input type = 'submit' value = 'Create Doctor'/>
